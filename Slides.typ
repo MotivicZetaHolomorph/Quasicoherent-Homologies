@@ -180,12 +180,12 @@
     text(size: 15pt)[
       *Bước ①:* $0 = n dot 0 in N$ ✓
       
-      v(0.12in)
+      #v(0.12in)
       
       *Bước ②:* Với $n k_1, n k_2 in N$:
       $n k_1 + n k_2 = n(k_1 + k_2) in N$ ✓
       
-      v(0.12in)
+      #v(0.12in)
       
       *Bước ③:* Với $m in bb(Z), n k in N$:
       $m(n k) = n(m k) in N$ ✓
@@ -214,9 +214,9 @@
     fill: rgb("#f0f4ff"),
     stroke: 1pt + rgb("#1a73e8"),
     radius: 4pt,
-    text(size: 15pt, weight: "semibold")[
+    text(size: 15pt)[
       Cho R là vành giao hoán, M là R-module.
-      Chứng minh: Ann(M) = {r ∈ R | r·m = 0, ∀m ∈ M} là R-module con
+      Chứng minh: $"Ann(M)" = {r ∈ R | r m = 0, ∀m ∈ M}$ là R-module con
     ]
   )
   v(0.25in)
@@ -230,13 +230,13 @@
     text(size: 14pt)[
       *Bước ①:* $0 dot m = 0$ ∀m ∈ M → 0 ∈ Ann(M) ✓
       
-      v(0.12in)
+      #v(0.12in)
       
       *Bước ②:* Với $r_1, r_2$ ∈ Ann(M):
       $(r_1 + r_2) m = r_1 m + r_2 m = 0 + 0 = 0$
       → $r_1 + r_2$ ∈ Ann(M) ✓
       
-      v(0.12in)
+      #v(0.12in)
       
       *Bước ③:* Với $a in R$, $r in$ Ann(M):
       $(a r) m = a(r m) = a dot 0 = 0$
@@ -298,14 +298,14 @@
       fill: gradient.linear(rgb("#c5e1a5"), rgb("#dcedc8")),
       stroke: 2pt + rgb("#558b2f"),
       radius: 6pt,
-      text(size: 15pt, weight: "bold", fill: rgb("#1b5e20"))[
-        N ⊆ M là R-module con ⟺
+      text(size: 15pt, fill: rgb("#1b5e20"))[
+        N ⊆ M là R-module con $<=>$
         
-        (1) 0 ∈ N
+        (1) $0 ∈ N$
         
-        (2) ∀x, y ∈ N: x + y ∈ N
+        (2) $∀x, y ∈ N: x + y ∈ N$
         
-        (3) ∀r ∈ R, x ∈ N: r·x ∈ N
+        (3) $∀r ∈ R, x ∈ N: r dot x ∈ N$
       ]
     )
   })
@@ -339,7 +339,7 @@
       stroke: 1pt + rgb("#7b1fa2"),
       radius: 4pt,
       text(size: 18pt, fill: rgb("#4a148c"), weight: "bold")[
-        ... → A $arrow.r(f)$ B $arrow.r(g)$ C → ...
+        ... → A $arrow.r^(f)$ B $arrow.r^(g)$ C → ...
       ]
     )
   })
@@ -407,15 +407,15 @@
       text(size: 14pt)[
         • *f là đơn cấu* (từ 0, "im"(0) = {0})
         
-        v(0.08in)
+        #v(0.08in)
         
         • *g là toàn cấu* (vào 0, "ker"(0) = 0)
         
-        v(0.08in)
+        #v(0.08in)
         
         • *im(f) = ker(g)* (dãy khớp tại M)
         
-        v(0.08in)
+        #v(0.08in)
         
         • Có thể viết: M ≃ N ⊕ P / (tương đương)
       ]
@@ -452,11 +452,11 @@
     text(size: 15pt)[
       Cho N, P là R-module con của M. Khi đó:
       
-      v(0.12in)
+      #v(0.12in)
       
       $0 arrow.r N inter P arrow.long.r^(phi) N times P arrow.long.r^(psi) N + P arrow.r 0$
       
-      v(0.1in)
+      #v(0.1in)
       
       là dãy khớp ngắn với:
       • $phi(x) = (x, x)$ cho $x in N inter P$
@@ -477,11 +477,11 @@
     text(size: 14pt, fill: rgb("#b71c1c"))[
       • *Khớp tại N∩P:* $phi$ đơn cấu ✓
       
-      v(0.08in)
+      #v(0.08in)
       
       • *Khớp tại N×P:* $"im"(phi) = "ker"(psi)$ (nếu $(y,z) in "ker"(psi)$ thì $y=z$) ✓
       
-      v(0.08in)
+      #v(0.08in)
       
       • *Khớp tại N+P:* $psi$ toàn cấu (mọi phần tử N+P là ảnh của $psi$) ✓
     ]
@@ -524,7 +524,7 @@
         Nếu 4 ánh xạ đầu/cuối có tính chất mạnh (đơn/toàn cấu),
         thì ánh xạ ở giữa cũng sẽ thừa hưởng tính chất đó.
         
-        v(0.08in)
+        #v(0.08in)
         
         *Trường hợp đặc biệt:* Nếu cột giữa "bị nén" giữa hai ánh xạ đơn & toàn cấu, thì cột đó phải = 0
       ]
