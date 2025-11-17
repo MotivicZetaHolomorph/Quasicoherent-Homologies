@@ -1,174 +1,211 @@
-#set page(margin: 1em)
+#set page(margin: 1.5in)
 #set text(font: "New Computer Modern", size: 12pt)
 #set heading(numbering: "1.1")
 #show heading: it => {
-  set text(weight: "bold", fill: rgb("#1a73e8"))
+  set text(weight: "bold", fill: rgb("#1a73e8"), size: 14pt)
   it
-  v(0.2em)
+  v(0.3em)
 }
 
-= R-Module Cấp Con
+= R-Module Con
 
-#text(weight: "bold", size: 13pt)[Định nghĩa.]
-Cho $R$ là vành giao hoán, $M$ là $R$-module. Tập hợp $N subseteq M$ gọi là $R$-module con (hay $R$-module cấp con) nếu thỏa mãn:
+#box(
+  width: 100%,
+  inset: 0.15in,
+  fill: rgb("#f0f4ff"),
+  stroke: 1pt + rgb("#1a73e8"),
+  radius: 4pt,
+  text(weight: "bold", size: 13pt)[Định nghĩa.]
+) 
 
-+ $0_M in N$ (chứa phần tử không)
-+ $forall x, y in N: x + y in N$ (đóng dưới phép cộng)
-+ $forall r in R, x in N: r dot x in N$ (đóng dưới tác động vô hướng)
+Cho $R$ là vành giao hoán, $M$ là $R$-module. Tập hợp $N subset.eq M$ gọi là $R$-module con nếu:
 
-== Ví dụ đơn giản
+1. $0_M in N$ (chứa phần tử không)
+2. $forall x, y in N: x + y in N$ (đóng dưới phép cộng)  
+3. $forall r in R, x in N: r dot x in N$ (đóng dưới tác động vô hướng)
 
-#text(weight: "bold", size: 13pt)[Ví dụ 1.] Cho $R = bb(Z), M = bb(Z), n in bb(Z)$ cố định. Khi đó $N = n bb(Z) = {n k | k in bb(Z)}$ là $bb(Z)$-module con của $M$.
+== Ví dụ 1: Các bội số nguyên
 
-#text(fill: rgb("#1a73e8"), weight: "bold")[Chứng minh:]
+#text(weight: "bold", size: 13pt)[Ví dụ.] Cho $R = bb(Z), M = bb(Z), n in bb(Z)$. Chứng minh: $N = n bb(Z)$ là module con.
 
-+ $0 = n dot 0 in N$ ✓
-+ Với $n k_1, n k_2 in N$: $n k_1 + n k_2 = n(k_1 + k_2) in N$ ✓
-+ Với $m in bb(Z), n k in N$: $m(n k) = n(m k) in N$ ✓
+#box(
+  width: 100%,
+  inset: 0.12in,
+  fill: rgb("#f5f5f5"),
+  stroke: 1pt + rgb("#999"),
+  radius: 3pt,
+  text(fill: rgb("#1a73e8"), weight: "bold")[Chứng minh:]
+)
 
-== Ví dụ phức tạp hơn
+1. $0 = n dot 0 in N$ ✓
+2. Với $n k_1, n k_2 in N$: $n k_1 + n k_2 = n(k_1 + k_2) in N$ ✓
+3. Với $m in bb(Z), n k in N$: $m(n k) = n(m k) in N$ ✓
 
-#text(weight: "bold", size: 13pt)[Ví dụ 2.] Cho $R = k[x, y], M = k[x, y]$. Tập hợp $N = {f(x, y) | deg(f) >= 2}$ không là $R$-module con.
+== Ví dụ 2: Không phải module con
 
-#text(fill: rgb("#1a73e8"), weight: "bold")[Chứng minh:]
-Vì $x, y in M$ nhưng $x + y in.not N$ (bậc của $x + y$ là 1 < 2). ✗
+#text(weight: "bold", size: 13pt)[Ví dụ.] Cho $R = k[x, y], M = k[x, y]$. Xét $N$ không là module con.
 
-== Ví dụ 3: Annihilator (Triệt tiêu tử)
+#box(
+  width: 100%,
+  inset: 0.12in,
+  fill: rgb("#f5f5f5"),
+  stroke: 1pt + rgb("#999"),
+  radius: 3pt,
+  text(fill: rgb("#1a73e8"), weight: "bold")[Chứng minh:]
+)
 
-#text(weight: "bold", size: 13pt)[Ví dụ 3.] Cho $R$ là vành giao hoán, $M$ là $R$-module. Annihilator của $M$ là:
-$$"Ann"(M) = {r in R mid r dot m = 0, forall m in M}$$
+Vì $x, y in M$ nhưng $x + y in.not N$. ✗
 
-Chứng minh rằng $"Ann"(M)$ là $R$-module con của $R$.
+== Ví dụ 3: Annihilator
 
-#text(fill: rgb("#1a73e8"), weight: "bold")[Chứng minh:]
+#text(weight: "bold", size: 13pt)[Ví dụ.] Cho $M$ là $R$-module. Định nghĩa:
 
-+ $0 dot m = 0$ với mọi $m in M$, nên $0 in "Ann"(M)$ ✓
-+ Với $r_1, r_2 in "Ann"(M)$: 
-  $(r_1 + r_2) dot m = r_1 dot m + r_2 dot m = 0 + 0 = 0$, 
-  nên $r_1 + r_2 in "Ann"(M)$ ✓
-+ Với $a in R, r in "Ann"(M)$: 
-  $(a r) dot m = a(r dot m) = a dot 0 = 0$, 
-  nên $a r in "Ann"(M)$ ✓
+$"Ann"(M) = {r in R | r dot m = 0, forall m in M}$
 
-== Các Tính chất Cơ bản
+Chứng minh: $"Ann"(M)$ là $R$-module con của $R$.
 
-#text(weight: "bold", size: 13pt)[Mệnh đề 1.] Giao của các $R$-module con là $R$-module con.
+#box(
+  width: 100%,
+  inset: 0.12in,
+  fill: rgb("#f5f5f5"),
+  stroke: 1pt + rgb("#999"),
+  radius: 3pt,
+  text(fill: rgb("#1a73e8"), weight: "bold")[Chứng minh:]
+)
 
-#text(fill: rgb("#1a73e8"), weight: "bold")[Chứng minh.] 
-Cho ${N_i}_{i in I}$ là họ $R$-module con của $M$. Đặt $N = sect.big_{i in I} N_i$.
+1. $0 dot m = 0$ với mọi $m in M$, nên $0 in "Ann"(M)$ ✓
+2. Với $r_1, r_2 in "Ann"(M)$: $(r_1 + r_2) dot m = 0$, nên $r_1 + r_2 in "Ann"(M)$ ✓
+3. Với $a in R, r in "Ann"(M)$: $(a r) dot m = 0$, nên $a r in "Ann"(M)$ ✓
 
-+ $0_M in N_i$ với mọi $i$, nên $0_M in N$ ✓
-+ Với $x, y in N$: $x, y in N_i$ với mọi $i => x + y in N_i$ với mọi $i => x + y in N$ ✓
-+ Tương tự cho tính đóng dưới tác động của $R$ ✓
+== Các tính chất cơ bản
 
-#text(weight: "bold", size: 13pt)[Mệnh đề 2 (Dạng chuẩn).]
-Cho $R$ là vành giao hoán, $M$ là $R$-module, $S subseteq M$ là tập con. Module con sinh bởi $S$ được định nghĩa là:
+#text(weight: "bold", size: 13pt)[Mệnh đề 1.]
+Giao của các $R$-module con là $R$-module con.
 
-$$angle.l S angle.r = {sum_{i=1}^n r_i s_i | n in bb(N), r_i in R, s_i in S}$$
+#box(
+  width: 100%,
+  inset: 0.12in,
+  fill: rgb("#f5f5f5"),
+  stroke: 1pt + rgb("#999"),
+  radius: 3pt,
+  text(fill: rgb("#1a73e8"), weight: "bold")[Chứng minh:]
+)
 
-Đây là tập hợp tất cả các tổ hợp tuyến tính hữu hạn của các phần tử trong $S$.
+Cho họ các module con của $M$. Đặt $N = inter.big_{i in I} N_i$.
 
-#text(fill: rgb("#1a73e8"), weight: "bold")[Chứng minh:]
-Gọi $N = angle.l S angle.r$. Kiểm tra 3 điều kiện:
+1. $0_M in N$ ✓
+2. Với $x, y in N$: $x + y in N$ ✓
+3. Tương tự cho tính đóng dưới tác động của $R$ ✓
 
-+ $0_M = sum_{i=1}^0 r_i s_i in N$ ✓
-+ Với $x, y in N$: $x = sum_{i=1}^m r_i s_i, y = sum_{j=1}^n r'_j s'_j => x + y in N$ ✓
-+ Với $a in R, x = sum_{i=1}^m r_i s_i in N$: $a dot x = sum_{i=1}^m (a r_i) s_i in N$ ✓
+#text(weight: "bold", size: 13pt)[Mệnh đề 2.]
+Module con sinh bởi tập $S subset.eq M$ là tập tất cả các tổng hữu hạn $sum_{i=1}^n r_i s_i$ với $r_i in R, s_i in S$.
 
-#text(weight: "bold", size: 13pt)[Ví dụ 4.]
-Cho $R = bb(Z), M = bb(Z), S = {n}$. Khi đó 
-$$angle.l S angle.r = angle.l n angle.r = n bb(Z) = {n k | k in bb(Z)}$$
-
-== Định lý Đẳng cấu (Isomorphism Theorem)
+== Định lý đẳng cấu
 
 #text(weight: "bold", size: 13pt)[Định lý.]
-Cho $phi: X arrow.long.r M$ là $R$-module đồng cấu với $"ker"(phi) = A$. Khi đó:
-$$X / A tilde.equiv "im"(phi)$$
+Cho $phi: X arrow.long.r^(phi) M$ là module đồng cấu với $"ker"(phi) = A$. Khi đó:
 
-#text(fill: rgb("#1a73e8"), weight: "bold")[Chứng minh:]
+$X / A tilde.equiv "im"(phi)$
+
+#box(
+  width: 100%,
+  inset: 0.12in,
+  fill: rgb("#f5f5f5"),
+  stroke: 1pt + rgb("#999"),
+  radius: 3pt,
+  text(fill: rgb("#1a73e8"), weight: "bold")[Chứng minh:]
+)
 
 *Bước 1: Xây dựng ánh xạ*
 
-Định nghĩa $overline(phi): X/A arrow.long.r M$ bởi $overline(phi)(x + A) = phi(x)$.
+Định nghĩa $overline(phi): X/A arrow.long.r^(overline(phi)) M$ bởi $overline(phi)(x + A) = phi(x)$.
 
-*Bước 2: Chứng minh ánh xạ được định nghĩa tốt*
+*Bước 2: Được định nghĩa tốt*
 
-Nếu $x + A = y + A$ thì $x - y in A = "ker"(phi) => phi(x - y) = 0 => phi(x) = phi(y)$. ✓
+Nếu $x + A = y + A$ thì $x - y in A$, nên $phi(x) = phi(y)$ ✓
 
-*Bước 3: Chứng minh đồng cấu*
+*Bước 3: Đồng cấu*
 
-$overline(phi)((x+A) + (y+A)) = phi(x+y) = phi(x) + phi(y) = overline(phi)(x+A) + overline(phi)(y+A)$ ✓
+Tính cộng tính: $overline(phi)((x+A) + (y+A)) = overline(phi)(x+A) + overline(phi)(y+A)$ ✓
 
-*Bước 4: Chứng minh đơn cấu*
+*Bước 4: Đơn cấu*
 
-$overline(phi)(x+A) = 0 => phi(x) = 0 => x in "ker"(phi) = A => x + A = 0_{X/A}$ ✓
+$overline(phi)(x+A) = 0 => x in A => x + A = 0_{X/A}$ ✓
 
-*Bước 5: Chứng minh toàn cấu*
+*Bước 5: Toàn cấu*
 
-Với mọi $m in "im"(phi)$, tồn tại $x in X$ sao cho $phi(x) = m$, do đó $overline(phi)(x+A) = m$ ✓
+Với mọi $m in "im"(phi)$, tồn tại $x$ sao cho $overline(phi)(x+A) = m$ ✓
 
-*Kết luận:* $overline(phi): X/A tilde.equiv "im"(phi)$ là đẳng cấu $R$-module.
-
-== Dãy Khớp (Exact Sequences)
+== Dãy khớp
 
 #text(weight: "bold", size: 13pt)[Định nghĩa.]
-Dãy các $R$-module đồng cấu
-$$... arrow.r A arrow.long.r^(f) B arrow.long.r^(g) C arrow.r ...$$
-được gọi là *khớp* nếu tại mỗi vị trí: $"im"(f) = "ker"(g)$
+Dãy các module đồng cấu
 
-=== Dãy Khớp Ngắn
+$... arrow.r A arrow.long.r^(f) B arrow.long.r^(g) C arrow.r ...$
+
+được gọi là *khớp* nếu $"im"(f) = "ker"(g)$ tại mỗi vị trí.
+
+=== Dãy khớp ngắn
 
 #text(weight: "bold", size: 13pt)[Định nghĩa.]
-Dãy khớp ngắn là dãy khớp có dạng:
-$$0 arrow.r N arrow.long.r^(f) M arrow.long.r^(g) P arrow.r 0$$
+Dãy khớp ngắn là:
 
-*Tính chất:*
-- $f$ là đơn cấu
-- $g$ là toàn cấu
-- $"im"(f) = "ker"(g)$
+$0 arrow.r N arrow.long.r^(f) M arrow.long.r^(g) P arrow.r 0$
 
-=== Dãy Khớp cho Giao và Tổng
+*Tính chất:* $f$ đơn cấu, $g$ toàn cấu, $"im"(f) = "ker"(g)$
 
-#text(weight: "bold", size: 13pt)[Định lý 2.4a.]
-Cho $N, P$ là các $R$-module con của $R$-module $M$. Khi đó tồn tại dãy khớp ngắn:
-$$0 arrow.r N inter P arrow.long.r^(phi) N times P arrow.long.r^(psi) N + P arrow.r 0$$
+=== Dãy khớp cho giao và tổng
+
+#text(weight: "bold", size: 13pt)[Định lý.]
+Cho $N, P$ là các $R$-module con của $M$. Tồn tại dãy khớp:
+
+$0 arrow.r N inter P arrow.long.r^(phi) N times P arrow.long.r^(psi) N + P arrow.r 0$
+
 với $phi(x) = (x, x)$ và $psi(y, z) = y - z$.
 
-== Tích Tenxơ (Tensor Product)
+#box(
+  width: 100%,
+  inset: 0.12in,
+  fill: rgb("#f5f5f5"),
+  stroke: 1pt + rgb("#999"),
+  radius: 3pt,
+  text(fill: rgb("#1a73e8"), weight: "bold")[Kiểm tra khớp:]
+)
+
+*Tại $N inter P$:* $phi$ đơn cấu vì $phi(x) = (0,0) => x = 0$ ✓
+
+*Tại $N times P$:* $"im"(phi) = "ker"(psi)$ vì $psi(phi(x)) = 0$ ✓
+
+*Tại $N + P$:* $psi$ toàn cấu vì với $w = y + z$ có $psi(y, -z) = w$ ✓
+
+== Tích tenxơ
 
 #text(weight: "bold", size: 13pt)[Định nghĩa.]
-Cho $R$ là vành giao hoán, $M, N$ là $R$-module. Tích tenxơ $M ⊗_R N$ là $R$-module được xác định bởi:
-$$M ⊗_R N = (M times N) / S$$
-trong đó $S$ là $R$-module con sinh bởi các phần tử:
-- $(m_1 + m_2, n) - (m_1, n) - (m_2, n)$
-- $(m, n_1 + n_2) - (m, n_1) - (m, n_2)$
-- $(r dot m, n) - (m, r dot n)$
+Cho $R$ là vành giao hoán, $M, N$ là $R$-module. Tích tenxơ $M ⊗_R N$ là module thương với tính phổ dụng.
 
-Ký hiệu $m ⊗ n$ là lớp của $(m, n)$ trong thương.
+Ký hiệu: $m ⊗ n$ là ảnh của cặp $(m, n)$ trong module thương.
 
-=== Tính Chất Cơ bản
+=== Tính chất cơ bản
 
 #text(weight: "bold", size: 13pt)[Mệnh đề 1.]
-Ánh xạ $phi: M times N arrow.long.r M ⊗_R N$ định bởi $phi(m, n) = m ⊗ n$ là song tuyến tính:
+Ánh xạ $phi: M times N arrow.long.r^(phi) M ⊗_R N$ định bởi $phi(m, n) = m ⊗ n$ là song tuyến tính:
+
 - $(m_1 + m_2) ⊗ n = m_1 ⊗ n + m_2 ⊗ n$
-- $m ⊗ (n_1 + n_2) = m ⊗ n_1 + m ⊗ n_2$
+- $m ⊗ (n_1 + n_2) = m ⊗ n_1 + m ⊗ n_2$  
 - $(r dot m) ⊗ n = m ⊗ (r dot n) = r dot (m ⊗ n)$
 
 #text(weight: "bold", size: 13pt)[Mệnh đề 2 (Tính phổ dụng).]
-Cho $f: M times N arrow.long.r P$ là song tuyến tính. Khi đó tồn tại duy nhất đồng cấu 
-$overline(f): M ⊗_R N arrow.long.r P$ sao cho $overline(f)(m ⊗ n) = f(m, n)$.
+Cho $f: M times N arrow.long.r^(f) P$ song tuyến tính. Tồn tại duy nhất đồng cấu $overline(f): M ⊗_R N arrow.long.r^(overline(f)) P$ sao cho $overline(f)(m ⊗ n) = f(m, n)$.
 
 === Ví dụ
 
-#text(weight: "bold", size: 13pt)[Ví dụ 1:]
-$$bb(Z) ⊗_bb(Z) bb(Z) tilde.equiv bb(Z)$$ với $m ⊗ n = m n$
+#text(weight: "bold", size: 13pt)[Ví dụ 1:] $bb(Z) ⊗_bb(Z) bb(Z) tilde.equiv bb(Z)$
 
-#text(weight: "bold", size: 13pt)[Ví dụ 2:]
-$$M ⊗_R R tilde.equiv M$$ với $m ⊗ r = r dot m$
+#text(weight: "bold", size: 13pt)[Ví dụ 2:] $M ⊗_R R tilde.equiv M$
 
 #text(weight: "bold", size: 13pt)[Ví dụ 3:]
-Cho dãy khớp $0 arrow.r N arrow.long.r^(f) M arrow.long.r^(g) P arrow.r 0$ với $N, P$ hữu hạn sinh.
+Từ dãy khớp $0 arrow.r N arrow.long.r^(f) M arrow.long.r^(g) P arrow.r 0$, ta có dãy:
 
-Khi đó tenxơ với $R$-module $Q$ cho dãy khớp:
-$$N ⊗_R Q arrow.long.r^(f ⊗ id) M ⊗_R Q arrow.long.r^(g ⊗ id) P ⊗_R Q$$
-(tính chất: flatness)
+$N ⊗_R Q arrow.long.r^(f) M ⊗_R Q arrow.long.r^(g) P ⊗_R Q$
+
+(chỉ khớp tại $M ⊗_R Q$ trong trường hợp tổng quát - liên quan đến khái niệm "flatness")
