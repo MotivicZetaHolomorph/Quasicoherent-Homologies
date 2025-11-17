@@ -209,3 +209,109 @@ Từ dãy khớp $0 arrow.r N arrow.long.r^(f) M arrow.long.r^(g) P arrow.r 0$, 
 $N ⊗_R Q arrow.long.r^(f) M ⊗_R Q arrow.long.r^(g) P ⊗_R Q$
 
 (chỉ khớp tại $M ⊗_R Q$ trong trường hợp tổng quát - liên quan đến khái niệm "flatness")
+
+== Bài tập
+
+=== Bài 2.1
+
+#box(
+  width: 100%,
+  inset: 0.12in,
+  fill: rgb("#fff3e0"),
+  stroke: 1pt + rgb("#ff9800"),
+  radius: 4pt,
+  text(weight: "bold", size: 12pt, fill: rgb("#e65100"))[Bài tập 2.1]
+)
+
+Cho dãy khớp ngắn:
+
+$0 arrow.r N arrow.long.r^(f) M arrow.long.r^(g) P arrow.r 0$
+
+trong đó $N, P$ là các $R$-môđun hữu hạn sinh. Chứng minh rằng $M$ là $R$-môđun hữu hạn sinh.
+
+#box(
+  width: 100%,
+  inset: 0.12in,
+  fill: rgb("#f5f5f5"),
+  stroke: 1pt + rgb("#999"),
+  radius: 3pt,
+  text(fill: rgb("#1a73e8"), weight: "bold")[Chứng minh:]
+)
+
+Gọi $N = chevron.l n_1, n_2, ..., n_k chevron.r$ và $P = chevron.l p_1, p_2, ..., p_l chevron.r$.
+
+Giả sử $m in M$, suy ra $g(m) in P$.
+
+Tồn tại $a_i in R$ sao cho $g(m) = sum_{i=1}^l a_i p_i$.
+
+Vì $g$ là toàn cấu nên tồn tại $m_i in M$ sao cho $p_i = g(m_i)$. Do đó:
+
+$g(m) = sum_{i=1}^l a_i g(m_i) = g(sum_{i=1}^l a_i m_i)$
+
+suy ra $m - sum_{i=1}^l a_i m_i in "ker"(g) = "im"(f)$.
+
+Vì thế tồn tại $n in N$ sao cho $m - sum_{i=1}^l a_i m_i = f(n)$.
+
+Do $n in N$ nên tồn tại $b_j in R$ sao cho $n = sum_{j=1}^k b_j n_j$.
+
+Vì vậy: $m = sum_{i=1}^l a_i m_i + f(sum_{j=1}^k b_j n_j) = sum_{i=1}^l a_i m_i + sum_{j=1}^k b_j f(n_j)$
+
+Nên $M = chevron.l m_1, m_2, ..., m_l, f(n_1), f(n_2), ..., f(n_k) chevron.r$ ✓
+
+=== Bài 2.2
+
+#box(
+  width: 100%,
+  inset: 0.12in,
+  fill: rgb("#fff3e0"),
+  stroke: 1pt + rgb("#ff9800"),
+  radius: 4pt,
+  text(weight: "bold", size: 12pt, fill: rgb("#e65100"))[Bài tập 2.2]
+)
+
+Cho dãy khớp:
+
+$A arrow.long.r^(f) B arrow.long.r^(g) C arrow.long.r^(h) D$
+
+Chứng minh rằng các phát biểu sau là tương đương:
+
+(a) $f$ là toàn cấu.
+
+(b) $g$ là đồng cấu không.
+
+(c) $h$ là đơn cấu.
+
+#box(
+  width: 100%,
+  inset: 0.12in,
+  fill: rgb("#f5f5f5"),
+  stroke: 1pt + rgb("#999"),
+  radius: 3pt,
+  text(fill: rgb("#1a73e8"), weight: "bold")[Chứng minh:]
+)
+
+*Bước 1: $(a) => (b)$*
+
+Với mọi $b in B$, tồn tại $a in A$ sao cho $f(a) = b$ (vì $f$ toàn cấu).
+
+Nên $g f(a) = g(b) = 0$ (từ tính khớp tại $B$: $"im"(f) = "ker"(g)$).
+
+Vì $b$ tùy ý, ta có $g = 0$. ✓
+
+*Bước 2: $(b) => (c)$*
+
+Với mọi $c in "ker"(h)$. Do tính khớp tại $C$: $"ker"(h) = "im"(g)$, nên tồn tại $b in B$ sao cho $c = g(b)$.
+
+Nhưng $g = 0$ (giả thiết $(b)$), nên $c = 0$.
+
+Vì thế $"ker"(h) = {0}$, tức là $h$ đơn cấu. ✓
+
+*Bước 3: $(c) => (a)$*
+
+Với mọi $b in B$, suy ra $g(b) in "im"(g) = "ker"(h)$.
+
+Vì $h$ đơn cấu (giả thiết $(c)$), nên $"ker"(h) = {0}$, suy ra $g(b) = 0$.
+
+Do đó $b in "ker"(g) = "im"(f)$, nên tồn tại $a in A$ sao cho $b = f(a)$.
+
+Tức là $f$ toàn cấu. ✓
